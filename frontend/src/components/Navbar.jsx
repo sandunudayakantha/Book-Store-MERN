@@ -5,9 +5,12 @@ import { IoSearchOutline } from "react-icons/io5"
 import { FaRegUser } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
+import { FaUserCheck } from "react-icons/fa";
+
+import avatarImg from "../assets/user.png"
 const Navbar = () => {
 
-    const currentUser = false;
+    const currentUser = true;
 
   return (
     <div className=' max-w-screen-2xl mx-auto md:px-40 py-6 px-5' >
@@ -27,8 +30,8 @@ const Navbar = () => {
         
         <div className='flex items-center md:space-x-3 space-x-1 mx-3'>
 
-            <div>{
-                currentUser ? <>user</> :  <FaRegUser className='size-6' />
+            <div >{
+                currentUser ? <><button>  <FaUserCheck className='size-6'/></button></> : <Link to="./login"><FaRegUser className='size-6 strock-' /></Link>
                     }
             </div>
 
