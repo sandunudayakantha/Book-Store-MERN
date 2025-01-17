@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router'
 import { FaBars } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5"
@@ -9,6 +9,9 @@ import { FaUserCheck } from "react-icons/fa";
 
 import avatarImg from "../assets/user.png"
 const Navbar = () => {
+
+    const [isDropdownOpen,setisDropdownOpen]=useState(false)
+    console.log(isDropdownOpen)
 
     const currentUser = true;
 
@@ -31,7 +34,7 @@ const Navbar = () => {
         <div className='flex items-center md:space-x-3 space-x-1 mx-3'>
 
             <div >{
-                currentUser ? <><button>  <FaUserCheck className='size-6'/></button></> : <Link to="./login"><FaRegUser className='size-6 strock-' /></Link>
+                currentUser ? <><button onClick={()=>setisDropdownOpen(!isDropdownOpen)}>  <FaUserCheck className='size-6'/></button></> : <Link to="./login"><FaRegUser className='size-6 strock-' /></Link>
                     }
             </div>
 
