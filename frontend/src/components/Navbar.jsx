@@ -6,6 +6,9 @@ import { FaRegUser } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 const Navbar = () => {
+
+    const currentUser = false;
+
   return (
     <div className=' max-w-screen-2xl mx-auto md:px-40 py-6 px-5' >
         <div className='flex justify-between items-center'>
@@ -23,7 +26,13 @@ const Navbar = () => {
         
         
         <div className='flex items-center md:space-x-3 space-x-1 mx-3'>
-        <FaRegUser className='size-6' />
+
+            <div>{
+                currentUser ? <>user</> :  <FaRegUser className='size-6' />
+                    }
+            </div>
+
+       
         <button>
             <FaRegHeart className='md:size-6 size-6 hidden md:block' />
         </button>
