@@ -8,6 +8,13 @@ import { IoCartOutline } from "react-icons/io5";
 import { FaUserCheck } from "react-icons/fa";
 
 import avatarImg from "../assets/user.png"
+
+const navigation = [
+    {name:"Dashboard", href:"/dashboard"},
+    {name:"Orders", href:"/order"},
+    {name:"Cart Page", href:"/cart"},
+    {name:"Check Out", href:"/checkout"},
+]
 const Navbar = () => {
 
     const [isDropdownOpen,setisDropdownOpen]=useState(false)
@@ -31,10 +38,30 @@ const Navbar = () => {
         
         
         
-        <div className='flex items-center md:space-x-3 space-x-1 mx-3'>
+        <div className='relative flex items-center md:space-x-3 space-x-1 mx-3'>
 
             <div >{
-                currentUser ? <><button onClick={()=>setisDropdownOpen(!isDropdownOpen)}>  <FaUserCheck className='size-6'/></button></> : <Link to="./login"><FaRegUser className='size-6 strock-' /></Link>
+                currentUser ? <><button onClick={()=>setisDropdownOpen(!isDropdownOpen)}>  <FaUserCheck className='size-6'/></button>
+                
+                {
+                    isDropdownOpen && (
+                        <div className='absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md z-40'>
+                            <ul className='py-2 '>
+                                {
+                                    navigation.map((item)=>(
+                                        <li key={item.name}>
+                                            <Link to={item.href} className='px-4 block py-2 text-sm hover:bg-gray-200'>
+                                            {item.name}
+                                            </Link>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
+                    )
+                }
+                
+                </> : <Link to="./login"><FaRegUser className='size-6 strock-' /></Link>
                     }
             </div>
 
