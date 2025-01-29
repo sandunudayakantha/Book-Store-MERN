@@ -20,7 +20,7 @@ const Navbar = () => {
     const [isDropdownOpen,setisDropdownOpen]=useState(false)
     console.log(isDropdownOpen)
 
-    const currentUser = true;
+    const currentUser = false;
 
   return (
     <div className=' max-w-screen-2xl mx-auto md:px-40 py-6 px-5' >
