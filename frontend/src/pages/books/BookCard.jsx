@@ -6,6 +6,10 @@ import { Link } from 'react-router'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import {useDispatch} from 'react-redux'
+
+import {addToCart} from '../../redux/features/cart/cartSlice'
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -16,6 +20,13 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 
 const BookCard = ({book}) => {
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (product)=>{
+    dispatch(addToCart(product))
+  }
+   
   return (
     <div >
         <div className='flex items-center mb-4 hover:shadow-lg rounded-md p-1'>
@@ -37,7 +48,7 @@ const BookCard = ({book}) => {
 
                 <p className='font-medium mb-5'>$ {book?.newPrice}  <span className='font-normal ml-1 line-through'>$ {book?.oldPrice}</span></p>
 
-                <button className='md:my-5 my-5 bg-yellow-300 md:px-2 px-6 md:py-2 py-2 rounded-lg border border-yellow-700 hover:bg-amber-500 flex items-center gap-2'> <FiShoppingCart /> Add to Cart</button>
+                <button onClick={()=> handleAddToCart(book)} className='md:my-5 my-5 bg-yellow-300 md:px-2 px-6 md:py-2 py-2 rounded-lg border border-yellow-700 hover:bg-amber-500 flex items-center gap-2'> <FiShoppingCart /> Add to Cart</button>
                
             </div>
        </div>
