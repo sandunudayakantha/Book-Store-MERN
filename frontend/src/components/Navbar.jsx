@@ -8,6 +8,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { FaUserCheck } from "react-icons/fa";
 
 import avatarImg from "../assets/user.png"
+import { useSelector } from 'react-redux';
 
 const navigation = [
     {name:"Dashboard", href:"/dashboard"},
@@ -16,6 +17,9 @@ const navigation = [
     {name:"Check Out", href:"/checkout"},
 ]
 const Navbar = () => {
+
+    const cartItems = useSelector(state => state.cart.cartItems);
+    
 
     const [isDropdownOpen,setisDropdownOpen]=useState(false)
     console.log(isDropdownOpen)
@@ -72,7 +76,11 @@ const Navbar = () => {
 
         <Link to="/cart" className='bg-yellow-300 flex items-center md:px-6 py-1 px-2 gap-3 rounded'>
         <IoCartOutline className='size-6' />
-        <span>0</span>
+
+        {
+            cartItems.length > 0 ?  <span>{cartItems.length}</span> : <span>0</span>
+        }
+       
 
         </Link>
         
