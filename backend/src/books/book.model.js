@@ -32,5 +32,5 @@ const bookSchema = new mongoose.Schema({
     timestamps:true,
 });
 
-const Book = mangoose.model('Book',bookSchema);
+const Book = mongoose.model('Book',bookSchema);
 module.exports = Book;
